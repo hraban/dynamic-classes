@@ -6,7 +6,7 @@
 {set-property title "Dynamic-Classes | metabang.com"}
 
  [devel-list]: http://common-lisp.net/cgi-bin/mailman/listinfo/dynamic-classes-devel
- [cliki-home]: http://www.cliki.net//dynamic-classes
+ [cliki-home]: http://www.cliki.net/dynamic-classes
  [tarball]: http://common-lisp.net/project/dynamic-classes/dynamic-classes.tar.gz
   
 <div id="header">
