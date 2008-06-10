@@ -18,8 +18,7 @@
                (find-class (first superclasses) nil))
          (values (first superclasses)))
         (t
-         (let (#+MCL (ccl::*warn-if-redefine* nil)
-               #+MCL (ccl::*record-source-file* nil))
+	 (muffle-redefinition-warnings
            (eval `(progn
                     (when (find-class ',name nil)
                       (setf (find-class ',name) nil))
@@ -32,8 +31,7 @@
 (defun define-class (class-name superclasses slots &rest class-options)
   "Define a class with all the bells and whistles on the fly... See 
 simple-define-class for the simpler version."
-  (let (#+MCL (ccl::*warn-if-redefine* nil)
-        #+MCL (ccl::*record-source-file* nil))
+  (muffle-redefinition-warnings
     (eval `(,*define-class-form* 
             ,(or class-name 
                  (setf class-name

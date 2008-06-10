@@ -9,7 +9,8 @@
 		#:class-precedence-list
 		#:class-direct-subclasses
 		#:get-class
-		#:finalize-class-if-necessary)  
+		#:finalize-class-if-necessary
+		#:muffle-redefinition-warnings)  
   (:export
    #:existing-subclass
    #:include-class-dependencies
