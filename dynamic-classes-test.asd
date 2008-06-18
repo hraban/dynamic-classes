@@ -1,7 +1,7 @@
-(defpackage #:asdf-lift-test (:use #:asdf #:cl))
-(in-package #:asdf-lift-test)
+(defpackage #:dynamic-classes-test-system (:use #:asdf #:cl))
+(in-package #:dynamic-classes-test-system)
 
-(defsystem lift-test
+(defsystem dynamic-classes-test
   :author "Gary Warren King <gwking@metabang.com>"
   :maintainer "Gary Warren King <gwking@metabang.com>"
   :licence "MIT Style License; see file COPYING for details"
@@ -10,23 +10,19 @@
 		"setup"
 		:pathname "test/"
 		:components ((:file "packages")
-			     (:file "lift-test"
+			     (:file "tests"
 				    :depends-on ("packages"))))
 	       (:module 
 		"test"
 		:pathname "test/"
 		:depends-on ("setup")
-		:components ((:file "test-dynamic-variables")
-			     (:file "equality-tests")
-			     (:file "finding-tests")
-			     (:file "order-of-operations")
-				     #+(or)
-			     (:file "test-prototypes"))))  
-  :depends-on (:lift))
+		:components ()))  
+  :depends-on (:lift
+	       :dynamic-classes))
 
 (defmethod operation-done-p 
            ((o test-op)
-            (c (eql (find-system 'lift-test))))
+            (c (eql (find-system 'dynamic-classes-test))))
   (values nil))
 
 
