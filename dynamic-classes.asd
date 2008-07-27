@@ -13,5 +13,14 @@
 			     (:file "utilities")
 			     (:file "define-class")
 			     (:file "dynamic-class"))))
+  :in-order-to ((test-op (load-op dynamic-classes-test)))
+  :perform (test-op :after (op c)
+		    (funcall (intern (symbol-name '#:run-tests) :lift) 
+			     :config :generic))
   :depends-on (:metatilities-base))
+
+(defmethod operation-done-p 
+           ((o test-op) (c (eql (find-system 'dynamic-classes))))
+  (values nil))
+
 
