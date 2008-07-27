@@ -3,7 +3,7 @@
 
 (defsystem dynamic-classes
   :author "Gary Warren King <gwking@metabang.com>"
-  :version "1.0.1"
+  :version "1.0.2"
   :maintainer "Gary Warren King <gwking@metabang.com>"
   :licence "MIT Style license"
   :components ((:module 
