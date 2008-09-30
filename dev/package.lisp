@@ -23,7 +23,6 @@
    #:empty-add-parameter->dynamic-class
    #:empty-all-add-parameter->dynamic-class
    #:parameter->dynamic-class
-   #:determine-dynamic-class
    #:find-existing-subclass
    #:find-or-create-class))
 

@@ -7,14 +7,12 @@
 (defgeneric existing-subclass (class-type class-list)
   (:documentation ""))
 
-;;; ---------------------------------------------------------------------------
 ;;; Support for dynamic classes based on the parameters for instantiation...
 ;;;
 ;;; Here is a quick history lesson: we've been doing this for shapes, since
 ;;; there was a massive amount of potential shape superclasses, and only a
 ;;; small subset were ever used for any given instance, and this was the 
 ;;; cleanest and cutest approach...
-;;; ---------------------------------------------------------------------------
 
 (defvar *parameter-dynamic-class-table* nil)
 

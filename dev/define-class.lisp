@@ -1,8 +1,6 @@
 (in-package #:metabang-dynamic-classes)
 
-;;; ---------------------------------------------------------------------------
 ;;; some class defining functions
-;;; ---------------------------------------------------------------------------
 
 (defvar *define-class-form* 'metatilities:defclass*
   "The name of the form used to define a class. Usually, this will be bound to 'defclass* but when we are using GBBOpen, it will probably be bound to define-class or define-class*.")
