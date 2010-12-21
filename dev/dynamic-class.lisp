@@ -114,68 +114,11 @@
       (setf class-list (nconc (list dynamic-class) class-list)))
     
     (setf class-list (delete-duplicates class-list))
-    #+Ignore
-    (when-debugging-format determine-dynamic-class
-                           "DDC: class list ~A" class-list)
     (let ((it nil))
       (cond ((setf it (existing-subclass class-type class-list))
-             #+Ignore
-             (when-debugging-format determine-dynamic-class
-                                    "DSC: Found existing class: ~S" it)
              it)
             (t
              (if (and (length-1-list-p class-list)
                       (find-class (first class-list) nil))
                (first class-list)
                (define-class nil class-list nil)))))))
-
-#+Later
-(defun check-dynamic-class-consistency (class-type)
-  #+Later
-  ;;?? consistency checking
-  (assert (every (lambda (class)
-                   (find-class class t))
-                 super-classes)
-          nil
-          "The followin classes do not exist: ~A"
-          (list->formatted-string 
-           (remove-if (lambda (class) (find-class class t)) super-classes)
-           ", " "."))
-  #+LATER
-  (when copyable?
-    ;;?? consistency checking
-    (assert (every (lambda (class)
-                     (subtypep class 'copyable-mixin))
-                   super-classes)
-            nil
-            "Every class in ~A must be a sub-class of copyable-mixin. ~
-             The following are not: ~A"
-            (list->formatted-string super-classes ", " "")
-            (list->formatted-string 
-             (remove-if (lambda (class)
-			  (subtypep class 'copyable-mixin)) super-classes)
-             ", " "."))))
-
-#+Later
-(defun build-dynamic-class-documentation (class-type)
-  (setf (documentation (form-symbol class-type) 'type)
-        (format nil "~%Applicable Initargs:~%"))
-  (setf (documentation (form-symbol 'make- class-type) 'function)
-        (format nil "~%Applicable Initargs:~%"))
-  (setf (documentation (form-symbol 'new- class-type) 'function)
-        (format nil "~%Applicable Initargs:~%"))
-  ;;?? documentation, needs string-contains-p
-  (unless (string-contains-p (documentation (form-symbol class-type) 'type)
-                             (format nil "~A" parameter))
-    (setf (documentation (form-symbol class-type) 'type) 
-          (format nil "~A~%:~A" 
-                  (documentation (form-symbol class-type) 'type) parameter))
-    (setf (documentation (form-symbol 'make- class-type) 'function) 
-          (format nil "~A~%:~A" 
-                  (documentation (form-symbol 'make- class-type) 'function)
-		  parameter))
-    (setf (documentation (form-symbol 'new- class-type) 'function) 
-          (format nil "~A~%:~A" 
-                  (documentation (form-symbol 'new- class-type) 'function)
-		  parameter))))
-

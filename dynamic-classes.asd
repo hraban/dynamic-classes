@@ -10,7 +10,6 @@
 		"dev"
 		:serial t
 		:components ((:file "package")
-			     (:file "utilities")
 			     (:file "define-class")
 			     (:file "dynamic-class"))))
   :in-order-to ((test-op (load-op dynamic-classes-test)))
