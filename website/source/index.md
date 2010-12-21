@@ -5,7 +5,7 @@
 
   * [Mailing Lists][3]
   * [Getting it][4]
-  * [Documentation][5]
+{remark  * [Documentation][5]}
   * [News][6]
 {remark  * [Test results][tr]}
   * [Changelog][7]
@@ -22,11 +22,18 @@
 
 ### What it is
 
-Class-mixins are a great idea but sometimes they lead to a proliferation of subclasses with names like `printable-touchable-composing-colored-shape-square-mixin` and that's just ugly. Common-Lisp is a dynamic-programming language; Dynamic-Classes brings dynamism to class definition!
+Class-mixins are a great idea but sometimes they lead to a
+proliferation of subclasses with names like
+`printable-touchable-composing-colored-shape-square-mixin`
+and that's just ugly. Common-Lisp is a dynamic-programming
+language; Dynamic-Classes brings dynamism to class
+definition!
 
-You define the mixins and associate them with parameters. Then you 
+You define the mixins and associate them with parameters.
+Then you
 
-As an example, here is some code from [cl-containers][] iterators that hooks parameters to iterator mixins:
+As an example, here is some code from [cl-containers][]
+iterators that hooks parameters to iterator mixins:
 
     (add-parameter->dynamic-class
      :iterator :transform 'transforming-iterator-mixin)
@@ -68,7 +75,9 @@ and here it is in action:
     1.0 
     1.4142135 
 
-The `make-iterator` function calls `determine-iterator-class` to handle the work of figuring how (and possibly creating) the right class given the parameters.
+The `make-iterator` function calls `determine-iterator-class`
+to handle the work of figuring how (and possibly creating)
+the right class given the parameters.
 
     (defmethod make-iterator
         (iteratee &rest args &key (iterator-class nil) &allow-other-keys)
@@ -77,7 +86,8 @@ The `make-iterator` function calls `determine-iterator-class` to handle the work
              :container iteratee
              args))
 
-Dynamic-Classes can make prototyping a breeze (and it's lots of fun too)!
+Dynamic-Classes can make prototyping a breeze (and it's lots
+of fun too)!
 
 {anchor mailing-lists}
 
@@ -89,11 +99,14 @@ Dynamic-Classes can make prototyping a breeze (and it's lots of fun too)!
 
 ### Where is it
 
-A [darcs][] repository is available. The commands are listed below:
+metabang.com is switching from [darcs][] to [git][]
+for source control; the current dynamic-classes repository is on
+[github][github-dynamic-classes] and you can clone it using:
 
-    darcs get http://common-lisp.net/project/dynamic-classes/
+    git clone git://github.com/gwkkwg/dynamic-classes
 
-Dynamic-Classes is also [ASDF installable][]. Its CLiki home is right [where][cliki-home] you'd expect.
+Dynamic-Classes is also [ASDF installable][]. Its CLiki home
+is right [where][cliki-home] you'd expect.
 
 There's also a handy [gzipped tar file][tarball].
 
@@ -102,7 +115,13 @@ There's also a handy [gzipped tar file][tarball].
 
 ### What is happening
 
-2008-May-26 - We've split off from metatilities and are living large and on our own! More tests and documentation coming ... soon (we hope). 
+2010 Dec 21 
+moved to github.
+
+2008-May-26
+We've split off from metatilities and are living large and on
+our own! More tests and documentation coming ... soon (we
+hope).
 
 </div>
 </div>
